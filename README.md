@@ -18,3 +18,4 @@ Built with React, Tailwind CSS, and Firebase Authentication, connected to a Node
 ## Upcoming Updates
 - Enhancing frontend and introducing subscription model for Legal Case Analysis AI.
 - I will connect MongoDB backend with NLP/AI support.
+- Currently working to improve backend part.
