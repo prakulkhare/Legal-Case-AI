@@ -10,7 +10,10 @@ const analyzeCase = async (req, res) => {
       return res.status(400).json({ error: "caseText is required" });
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Use a Gemini model ID that is valid for the current API.
+    // Many keys expose the \"-latest\" aliases; if your key only supports certain models,
+    // you may need to adjust this string to one from the ListModels response.
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
     You are a legal AI assistant. Analyze the following case and provide:
@@ -26,7 +29,14 @@ const analyzeCase = async (req, res) => {
     res.json({ analysis: result.response.text() });
   } catch (error) {
     console.error("Error analyzing case:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+
+    // Surface more detail to the client while keeping a 500 status
+    const message =
+      error?.statusText ||
+      error?.message ||
+      "Internal Server Error while calling Gemini API";
+
+    res.status(500).json({ error: message });
   }
 };
 

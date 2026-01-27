@@ -3,7 +3,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 
+const connectDB = require("./config/database");
 const analyzeRoute = require("./routes/analyze");
+const casesRoute = require("./routes/cases");
+const profileRoute = require("./routes/profile");
+
+// Connect to MongoDB
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,7 +19,7 @@ app.use(bodyParser.json());
 
 app.use(cors({
   origin: "http://localhost:3000", // allow frontend
-  methods: ["GET", "POST"]
+  methods: ["GET", "POST", "PUT", "DELETE"]
 }));
 
 // Routes
@@ -22,6 +28,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/analyze", analyzeRoute);
+app.use("/api/cases", casesRoute);
+app.use("/api/profile", profileRoute);
 
 // Start server
 app.listen(PORT, () => {
