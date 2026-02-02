@@ -9,10 +9,7 @@ const analyzeCase = async (req, res) => {
     if (!caseText) {
       return res.status(400).json({ error: "caseText is required" });
     }
-
-    // Use a Gemini model ID that is valid for the current API.
-    // Many keys expose the \"-latest\" aliases; if your key only supports certain models,
-    // you may need to adjust this string to one from the ListModels response.
+  
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
