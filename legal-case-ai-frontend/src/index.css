@@ -2,15 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-.perspective {
+/* 3D flip cards */
+.perspective-1000 {
   perspective: 1000px;
 }
-.transform-style-preserve-3d {
+.style-3d {
   transform-style: preserve-3d;
 }
-.backface-hidden {
+.front-face {
   backface-visibility: hidden;
+  transform: rotateY(0deg);
+}
+.back-face {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+.line-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

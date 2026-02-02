@@ -10,6 +10,7 @@ import {
   FaFolderOpen,
   FaCog,
   FaSignOutAlt,
+  FaBalanceScale,
 } from "react-icons/fa";
 
 export default function Layout() {
@@ -41,8 +42,9 @@ export default function Layout() {
         {/* Logo & Toggle */}
         <div className="flex items-center justify-between mb-8">
           {sidebarOpen && (
-            <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">
-              ⚖️ Lawlytics
+            <h1 className="text-2xl font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2">
+              <FaBalanceScale size={28} />
+              Lawlytics
             </h1>
           )}
           <button
